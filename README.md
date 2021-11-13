@@ -1,5 +1,7 @@
 # Redwood GraphQL Connections
 
+TLDR: https://github.com/orta/redwood-app-connections/commit/a9a9b3b3ff4ba2cc4db6cbed92c1a017fc50db5a
+
 This is the default 0.38 Redwood with:
 
 ```prisma
@@ -150,4 +152,4 @@ Then change the posts to handle the new edge:
 ```
 
 
-That's roughly it.
+That's roughly it. You can see the fill work in https://github.com/orta/redwood-app-connections/commit/a9a9b3b3ff4ba2cc4db6cbed92c1a017fc50db5a
