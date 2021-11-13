@@ -3,6 +3,7 @@ import { toast } from '@redwoodjs/web/toast'
 import { Link, routes } from '@redwoodjs/router'
 
 import { QUERY } from 'src/components/Post/PostsCell'
+import { FindPosts } from 'types/graphql'
 
 const DELETE_POST_MUTATION = gql`
   mutation DeletePostMutation($id: String!) {
@@ -38,7 +39,7 @@ const checkboxInputTag = (checked) => {
   return <input type="checkbox" checked={checked} disabled />
 }
 
-const PostsList = ({ posts }) => {
+const PostsList = ({ posts }: FindPosts) => {
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     onCompleted: () => {
       toast.success('Post deleted')
@@ -70,7 +71,7 @@ const PostsList = ({ posts }) => {
           </tr>
         </thead>
         <tbody>
-          {posts.map((post) => (
+          {posts.edges.map(({ node: post }) => (
             <tr key={post.id}>
               <td>{truncate(post.id)}</td>
               <td>{truncate(post.content)}</td>

@@ -1,4 +1,21 @@
 export const schema = gql`
+  type PageInfo {
+    startCursor: String!
+    endCursor: String!
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+  }
+
+  type PostEdge {
+    node: Post!
+    cursor: String!
+  }
+
+  type PostConnection {
+    edges: [PostEdge]
+    pageInfo: PageInfo!
+  }
+
   type Post {
     id: String!
     authors: [UserPost]!
@@ -6,7 +23,10 @@ export const schema = gql`
   }
 
   type Query {
-    posts: [Post!]! @skipAuth
+    # posts: [Post!]! @skipAuth
+    posts(first: Int, last: Int, before: String, after: String): PostConnection
+      @skipAuth
+
     post(id: String!): Post @requireAuth
   }
 

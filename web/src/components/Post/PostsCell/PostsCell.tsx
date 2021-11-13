@@ -7,9 +7,13 @@ import Posts from 'src/components/Post/Posts'
 
 export const QUERY = gql`
   query FindPosts {
-    posts {
-      id
-      content
+    posts(first: 5) {
+      edges {
+        node {
+          id
+          content
+        }
+      }
     }
   }
 `
@@ -20,10 +24,7 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No posts yet. '}
-      <Link
-        to={routes.newPost()}
-        className="rw-link"
-      >
+      <Link to={routes.newPost()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>
