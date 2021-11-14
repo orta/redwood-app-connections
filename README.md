@@ -111,7 +111,7 @@ export const schema = gql`
     updatePost(id: String!, input: UpdatePostInput!): Post! @requireAuth
     deletePost(id: String!): Post! @requireAuth
   }
-`
+```
 
 Next: update the resolver for `posts`:
 
